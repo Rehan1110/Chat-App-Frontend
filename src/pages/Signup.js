@@ -29,7 +29,7 @@ function Signup() {
     async function uploadImage() {
         const data = new FormData();
         data.append("file", image);
-        data.append("upload_preset", 'ttm8smgv');
+        data.append("upload_preset", "ttm8smgv");
         try {
             setUploadingImg(true);
             let res = await fetch("https://api.cloudinary.com/v1_1/dhjy5ieqi/image/upload", {
@@ -66,7 +66,7 @@ function Signup() {
                     <Form style={{ width: "80%", maxWidth: 500 }} onSubmit={handleSignup}>
                         <h1 className="text-center">Create account</h1>
                         <div className="signup-profile-pic__container">
-                            <img src={imagePreview || botImg} className="signup-profile-pic" alt="can not display"/>
+                            <img src={imagePreview || botImg} className="signup-profile-pic" alt="can not display" />
                             <label htmlFor="image-upload" className="image-upload-label">
                                 <i className="fas fa-plus-circle add-picture-icon"></i>
                             </label>
