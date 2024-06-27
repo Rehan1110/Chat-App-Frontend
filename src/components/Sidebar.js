@@ -29,24 +29,24 @@ function Sidebar() {
     });
 
     useEffect(() => {
+        function getRooms() {
+            fetch("https://chat-app-backend-1-1msf.onrender.com/rooms")
+                .then((res) => res.json())
+                .then((data) => setRooms(data));
+        }
         if (user) {
             setCurrentRoom("general");
             getRooms();
             socket.emit("join-room", "general");
             socket.emit("new-user");
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    },[setRooms,setCurrentRoom, socket, user]);
 
     socket.off("new-user").on("new-user", (payload) => {
         setMembers(payload);
     });
 
-    function getRooms() {
-        fetch("https://chat-app-backend-1-1msf.onrender.com/rooms")
-            .then((res) => res.json())
-            .then((data) => setRooms(data));
-    }
+   
 
     function orderIds(id1, id2) {
         if (id1 > id2) {
